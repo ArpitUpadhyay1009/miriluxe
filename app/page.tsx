@@ -5,6 +5,7 @@ import Makeup from "@/src/components/makeup/Makeup";
 import SkinCare from "@/src/components/skin-care/SkinCare";
 import Hairfall from "@/src/components/hairfall/Hairfall";
 import NewLaunches from "@/src/components/new-launches/NewLaunches";
+import BabyCare from "@/src/components/baby-care/BabyCare";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <SkinCare />
       <Hairfall />
       <NewLaunches />
+      <BabyCare />
     </main>
   );
 }
