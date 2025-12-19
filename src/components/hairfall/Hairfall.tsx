@@ -134,7 +134,7 @@ export default function Hairfall() {
                         type="button"
                         aria-label="Scroll left"
                         onClick={() => scrollByCards("left")}
-                        className="absolute left-0 top-1/2 z-10 hidden h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50 md:inline-flex"
+                        className="absolute left-2 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50 md:left-0 md:-translate-x-1/2"
                     >
                         <ChevronLeft className="h-5 w-5" />
                     </button>
@@ -203,7 +203,7 @@ export default function Hairfall() {
                         type="button"
                         aria-label="Scroll right"
                         onClick={() => scrollByCards("right")}
-                        className="absolute right-0 top-1/2 z-10 hidden h-10 w-10 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50 md:inline-flex"
+                        className="absolute right-2 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50 md:right-0 md:translate-x-1/2"
                     >
                         <ChevronRight className="h-5 w-5" />
                     </button>
