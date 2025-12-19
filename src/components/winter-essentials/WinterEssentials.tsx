@@ -5,7 +5,18 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useMemo, useRef } from "react";
 
-function svgPlaceholderDataUrl(label) {
+type Product = {
+    id: string;
+    title: string;
+    subtitle: string;
+    sizeLabel: string;
+    rating: number;
+    reviews: number;
+    price: number;
+    badge?: string;
+};
+
+function svgPlaceholderDataUrl(label: string): string {
     const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" width="700" height="500" viewBox="0 0 700 500">
   <defs>
@@ -23,7 +34,7 @@ function svgPlaceholderDataUrl(label) {
 }
 
 export default function WinterEssentials() {
-    const products = useMemo(
+    const products = useMemo<Product[]>(
         () => [
             {
                 id: "w1",
@@ -89,9 +100,9 @@ export default function WinterEssentials() {
         [],
     );
 
-    const scrollerRef = useRef(null);
+    const scrollerRef = useRef<HTMLDivElement | null>(null);
 
-    const scrollByCards = (direction) => {
+    const scrollByCards = (direction: "left" | "right") => {
         const el = scrollerRef.current;
         if (!el) return;
         const base = Math.max(260, Math.round(el.clientWidth * 0.9));

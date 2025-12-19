@@ -5,7 +5,23 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useMemo, useRef } from "react";
 
-function svgPlaceholderDataUrl(label) {
+type BadgeTone = "green" | "red";
+
+type Product = {
+    id: string;
+    title: string;
+    subtitle: string;
+    sizeLabel: string;
+    rating: number;
+    reviews: number;
+    price: number;
+    mrp: number;
+    offer: string;
+    badge?: string;
+    badgeTone?: BadgeTone;
+};
+
+function svgPlaceholderDataUrl(label: string): string {
     const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" width="700" height="500" viewBox="0 0 700 500">
   <defs>
@@ -23,7 +39,7 @@ function svgPlaceholderDataUrl(label) {
 }
 
 export default function Makeup() {
-    const products = useMemo(
+    const products = useMemo<Product[]>(
         () => [
             {
                 id: "mk1",
@@ -36,7 +52,7 @@ export default function Makeup() {
                 mrp: 549,
                 offer: "50% OFF",
                 badge: "B1G1 + 5% OFF",
-                badgeTone: "green",
+                badgeTone: "green" as const,
             },
             {
                 id: "mk2",
@@ -49,7 +65,7 @@ export default function Makeup() {
                 mrp: 999,
                 offer: "50% OFF",
                 badge: "BEST SELLER",
-                badgeTone: "red",
+                badgeTone: "red" as const,
             },
             {
                 id: "mk3",
@@ -62,7 +78,7 @@ export default function Makeup() {
                 mrp: 399,
                 offer: "50% OFF",
                 badge: "B1G1 + 5% OFF",
-                badgeTone: "green",
+                badgeTone: "green" as const,
             },
             {
                 id: "mk4",
@@ -75,7 +91,7 @@ export default function Makeup() {
                 mrp: 399,
                 offer: "50% OFF",
                 badge: "B1G1 + 5% OFF",
-                badgeTone: "green",
+                badgeTone: "green" as const,
             },
             {
                 id: "mk5",
@@ -88,7 +104,7 @@ export default function Makeup() {
                 mrp: 999,
                 offer: "50% OFF",
                 badge: "B1G1 + 5% OFF",
-                badgeTone: "green",
+                badgeTone: "green" as const,
             },
             {
                 id: "mk6",
@@ -101,15 +117,15 @@ export default function Makeup() {
                 mrp: 699,
                 offer: "50% OFF",
                 badge: "B1G1 + 5% OFF",
-                badgeTone: "green",
+                badgeTone: "green" as const,
             },
         ],
         [],
     );
 
-    const scrollerRef = useRef(null);
+    const scrollerRef = useRef<HTMLDivElement | null>(null);
 
-    const scrollByCards = (direction) => {
+    const scrollByCards = (direction: "left" | "right") => {
         const el = scrollerRef.current;
         if (!el) return;
         const base = Math.max(260, Math.round(el.clientWidth * 0.9));
@@ -158,9 +174,8 @@ export default function Makeup() {
                             >
                                 {p.badge ? (
                                     <span
-                                        className={`absolute left-2 top-2 rounded px-2 py-1 text-[10px] font-semibold text-white ${
-                                            p.badgeTone === "red" ? "bg-rose-600" : "bg-lime-600"
-                                        }`}
+                                        className={`absolute left-2 top-2 rounded px-2 py-1 text-[10px] font-semibold text-white ${p.badgeTone === "red" ? "bg-rose-600" : "bg-lime-600"
+                                            }`}
                                     >
                                         {p.badge}
                                     </span>
