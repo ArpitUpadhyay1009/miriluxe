@@ -5,18 +5,7 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useMemo, useRef } from "react";
 
-type Product = {
-    id: string;
-    title: string;
-    subtitle: string;
-    sizeLabel: string;
-    rating: number;
-    reviews: number;
-    price: number;
-    badge?: string;
-};
-
-function svgPlaceholderDataUrl(label: string) {
+function svgPlaceholderDataUrl(label) {
     const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" width="700" height="500" viewBox="0 0 700 500">
   <defs>
@@ -33,76 +22,76 @@ function svgPlaceholderDataUrl(label: string) {
     return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
 
-export default function BestSellers() {
-    const products = useMemo<Product[]>(
+export default function WinterEssentials() {
+    const products = useMemo(
         () => [
             {
-                id: "p1",
-                title: "Vitamin C Daily Glow Face Serum With Vitamin C & Turmeric for Radiant Skin",
-                subtitle: "Enriched with 50X Vitamin C | Brightens Skin",
-                sizeLabel: "30ml",
-                rating: 4.9,
-                reviews: 915,
-                price: 399,
-                badge: "B1G1 + 5% OFF",
-            },
-            {
-                id: "p2",
-                title: "Rice Oil-Free Face Moisturizer With Rice Water & Niacinamide for Glass Skin",
-                subtitle: "24-Hour Hydration | Brightens Skin Tone",
-                sizeLabel: "80g",
+                id: "w1",
+                title: "Moisturizing Body Lotion with Turmeric & Saffron for Winters",
+                subtitle: "48 Hrs Moisturization | 7-in-1 Care Benefits",
+                sizeLabel: "400ml",
                 rating: 4.6,
-                reviews: 816,
-                price: 319,
+                reviews: 72,
+                price: 499,
                 badge: "B1G1 + 5% OFF",
             },
             {
-                id: "p3",
-                title: "Beetroot Hydraful Moisturizer with Beetroot & Hyaluronic Acid for Natural Pink Glow",
-                subtitle: "Gives 24 hrs Nourishment | Antioxidant Rich",
-                sizeLabel: "200g",
+                id: "w2",
+                title: "Rice Water Hydrating Body Lotion with Rice Water & Niacinamide",
+                subtitle: "Benefits | Moisturizes | Softens Skin",
+                sizeLabel: "400ml",
                 rating: 4.7,
-                reviews: 32,
+                reviews: 68,
+                price: 499,
+                badge: "B1G1 + 5% OFF",
+            },
+            {
+                id: "w3",
+                title: "Vitamin C Daily Glow Light Moisturizer with Turmeric & Vitamin C",
+                subtitle: "Gives 24 hrs Nourishment | Glowing Skin",
+                sizeLabel: "200g",
+                rating: 4.5,
+                reviews: 68,
                 price: 449,
                 badge: "B1G1 + 5% OFF",
             },
             {
-                id: "p4",
-                title: "Beetroot Gentle Face Wash With Beetroot & Hyaluronic Acid - 100 ml",
-                subtitle: "Gives Natural Pink Glow | Hydrates Skin",
-                sizeLabel: "100ml",
-                rating: 5.0,
-                reviews: 110,
-                price: 269,
-                badge: "B1G1 + 5% OFF",
-            },
-            {
-                id: "p5",
-                title: "Onion Hair Oil for Hair Regrowth & Hair Fall Control",
-                subtitle: "Boosts Hair Growth | Strengthens Roots",
-                sizeLabel: "150ml",
+                id: "w4",
+                title: "Vitamin C Daily Glow Face Cream with Vitamin C & Turmeric",
+                subtitle: "Brightens Skin | Moisturizes Skin",
+                sizeLabel: "80g",
                 rating: 4.8,
-                reviews: 1240,
-                price: 399,
+                reviews: 165,
+                price: 249,
                 badge: "B1G1 + 5% OFF",
             },
             {
-                id: "p6",
-                title: "Ubtan Face Wash with Turmeric & Saffron for Tan Removal",
-                subtitle: "Removes Tan | Brightens Skin",
-                sizeLabel: "100ml",
+                id: "w5",
+                title: "Aloe Vera Gel for Skin & Hair",
+                subtitle: "Soothes Dry Skin | Hydrates & Nourishes",
+                sizeLabel: "300ml",
                 rating: 4.7,
-                reviews: 980,
-                price: 249,
+                reviews: 512,
+                price: 299,
+                badge: "B1G1 + 5% OFF",
+            },
+            {
+                id: "w6",
+                title: "Cocoa Body Butter for Deep Moisturization",
+                subtitle: "Deeply Nourishes | Soft & Smooth Skin",
+                sizeLabel: "200g",
+                rating: 4.6,
+                reviews: 210,
+                price: 399,
                 badge: "B1G1 + 5% OFF",
             },
         ],
         [],
     );
 
-    const scrollerRef = useRef<HTMLDivElement | null>(null);
+    const scrollerRef = useRef(null);
 
-    const scrollByCards = (direction: "left" | "right") => {
+    const scrollByCards = (direction) => {
         const el = scrollerRef.current;
         if (!el) return;
         const base = Math.max(260, Math.round(el.clientWidth * 0.9));
@@ -115,14 +104,14 @@ export default function BestSellers() {
             <div className="mx-auto w-full max-w-7xl px-4 lg:px-8">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                     <div>
-                        <h2 className="text-xl font-semibold text-slate-900">Best Sellers</h2>
+                        <h2 className="text-xl font-semibold text-slate-900">Winter Essentials</h2>
                         <p className="mt-1 max-w-3xl text-sm text-slate-600">
-                            Explore best-selling safe, natural, and 100% toxin-free baby and beauty products from Miriluxe.
-                            Get amazing deals and start your toxin-free skin, hair, and baby care journey.
+                            Explore the goodness of nature from Miriluxe. Take a look at our toxin-free and natural products
+                            for Winter.
                         </p>
                     </div>
                     <Link
-                        href="/best-sellers"
+                        href="/winter-essentials"
                         className="inline-flex h-9 shrink-0 items-center justify-center rounded-md bg-sky-600 px-4 text-xs font-semibold tracking-wide text-white hover:bg-sky-700"
                     >
                         VIEW ALL
