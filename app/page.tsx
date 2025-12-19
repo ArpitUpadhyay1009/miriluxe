@@ -10,6 +10,7 @@ import Monsoon from "@/src/components/monsoon/Monsoon";
 import Fragrances from "@/src/components/fragrances/Fragrances";
 import Information from "@/src/components/information/Information";
 import Charity from "@/src/components/charity/Charity";
+import Testimonial from "@/src/components/testimonial/Testimonial";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       <Fragrances />
       <Information />
       <Charity />
+      <Testimonial />
     </main>
   );
 }
