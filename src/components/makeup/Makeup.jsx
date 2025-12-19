@@ -10,80 +10,98 @@ function svgPlaceholderDataUrl(label) {
 <svg xmlns="http://www.w3.org/2000/svg" width="700" height="500" viewBox="0 0 700 500">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f1f5f9"/>
+      <stop offset="0" stop-color="#f8fafc"/>
       <stop offset="1" stop-color="#e2e8f0"/>
     </linearGradient>
   </defs>
   <rect width="700" height="500" rx="24" fill="url(#g)"/>
-  <rect x="70" y="60" width="560" height="320" rx="20" fill="#ffffff" opacity="0.7"/>
-  <text x="350" y="255" font-family="ui-sans-serif, system-ui" font-size="34" fill="#334155" text-anchor="middle">${label}</text>
+  <rect x="70" y="60" width="560" height="320" rx="20" fill="#ffffff" opacity="0.75"/>
+  <text x="350" y="255" font-family="ui-sans-serif, system-ui" font-size="34" fill="#0f172a" text-anchor="middle">${label}</text>
   <text x="350" y="305" font-family="ui-sans-serif, system-ui" font-size="18" fill="#64748b" text-anchor="middle">Product Image</text>
 </svg>`;
     return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
 
-export default function WinterEssentials() {
+export default function Makeup() {
     const products = useMemo(
         () => [
             {
-                id: "w1",
-                title: "Moisturizing Body Lotion with Turmeric & Saffron for Winters",
-                subtitle: "48 Hrs Moisturization | 7-in-1 Care Benefits",
-                sizeLabel: "400ml",
-                rating: 4.6,
-                reviews: 72,
-                price: 499,
-                badge: "B1G1 + 5% OFF",
-            },
-            {
-                id: "w2",
-                title: "Rice Water Hydrating Body Lotion with Rice Water & Niacinamide",
-                subtitle: "Benefits | Moisturizes | Softens Skin",
-                sizeLabel: "400ml",
-                rating: 4.7,
-                reviews: 68,
-                price: 499,
-                badge: "B1G1 + 5% OFF",
-            },
-            {
-                id: "w3",
-                title: "Vitamin C Daily Glow Light Moisturizer with Turmeric & Vitamin C",
-                subtitle: "Gives 24 hrs Nourishment | Glowing Skin",
-                sizeLabel: "200g",
+                id: "mk1",
+                title: "Pack of 2 Charcoal Black Long Stay Kajal with Vitamin C & Chamomile",
+                subtitle: "11-Hour Long Stay | Smudge Proof | Waterproof",
+                sizeLabel: "1g",
                 rating: 4.5,
-                reviews: 68,
-                price: 449,
+                reviews: 86,
+                price: 275,
+                mrp: 549,
+                offer: "50% OFF",
                 badge: "B1G1 + 5% OFF",
+                badgeTone: "green",
             },
             {
-                id: "w4",
-                title: "Vitamin C Daily Glow Face Cream with Vitamin C & Turmeric",
-                subtitle: "Brightens Skin | Moisturizes Skin",
-                sizeLabel: "80g",
+                id: "mk2",
+                title: "Moisture Matte Long Stay Lipstick Gift Set - Bright and Bold",
+                subtitle: "8 Hour Moisture Lock | Up to 12-Hour Long Stay",
+                sizeLabel: "3.2g",
                 rating: 4.8,
-                reviews: 165,
-                price: 249,
-                badge: "B1G1 + 5% OFF",
+                reviews: 98,
+                price: 500,
+                mrp: 999,
+                offer: "50% OFF",
+                badge: "BEST SELLER",
+                badgeTone: "red",
             },
             {
-                id: "w5",
-                title: "Aloe Vera Gel for Skin & Hair",
-                subtitle: "Soothes Dry Skin | Hydrates & Nourishes",
-                sizeLabel: "300ml",
+                id: "mk3",
+                title: "Nourishing Tinted 100% Natural Lip Balm with Vitamin E and Raspberry",
+                subtitle: "12-Hour Moisturization | Makes Lips Soft & Supple",
+                sizeLabel: "4g",
                 rating: 4.7,
-                reviews: 512,
-                price: 299,
+                reviews: 66,
+                price: 199,
+                mrp: 399,
+                offer: "50% OFF",
                 badge: "B1G1 + 5% OFF",
+                badgeTone: "green",
             },
             {
-                id: "w6",
-                title: "Cocoa Body Butter for Deep Moisturization",
-                subtitle: "Deeply Nourishes | Soft & Smooth Skin",
-                sizeLabel: "200g",
+                id: "mk4",
+                title: "Charcoal Black Kajal with Chamomile & Vitamin C",
+                subtitle: "Smudge Proof | Waterproof",
+                sizeLabel: "0.35g",
                 rating: 4.6,
                 reviews: 210,
-                price: 399,
+                price: 199,
+                mrp: 399,
+                offer: "50% OFF",
                 badge: "B1G1 + 5% OFF",
+                badgeTone: "green",
+            },
+            {
+                id: "mk5",
+                title: "Moisture Matte Long Stay Lipstick - Red Romance",
+                subtitle: "Long Stay | Comfortable Matte",
+                sizeLabel: "3.2g",
+                rating: 4.7,
+                reviews: 142,
+                price: 499,
+                mrp: 999,
+                offer: "50% OFF",
+                badge: "B1G1 + 5% OFF",
+                badgeTone: "green",
+            },
+            {
+                id: "mk6",
+                title: "Naturally Matte Compact Powder with Vitamin E",
+                subtitle: "Oil Control | Smooth Finish",
+                sizeLabel: "9g",
+                rating: 4.5,
+                reviews: 58,
+                price: 349,
+                mrp: 699,
+                offer: "50% OFF",
+                badge: "B1G1 + 5% OFF",
+                badgeTone: "green",
             },
         ],
         [],
@@ -104,14 +122,15 @@ export default function WinterEssentials() {
             <div className="mx-auto w-full max-w-7xl px-4 lg:px-8">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                     <div>
-                        <h2 className="text-xl font-semibold text-slate-900">Winter Essentials</h2>
+                        <h2 className="text-xl font-semibold text-slate-900">Makeup</h2>
                         <p className="mt-1 max-w-3xl text-sm text-slate-600">
-                            Explore the goodness of nature from Miriluxe. Take a look at our toxin-free and natural products
-                            for Winter.
+                            Color with care with our all-new colorcare range that’s 100% toxin-free and formulated with the
+                            goodness of natural ingredients. Check out our newly launched products & bring home your new
+                            favorites.
                         </p>
                     </div>
                     <Link
-                        href="/winter-essentials"
+                        href="/makeup"
                         className="inline-flex h-9 shrink-0 items-center justify-center rounded-md bg-sky-600 px-4 text-xs font-semibold tracking-wide text-white hover:bg-sky-700"
                     >
                         VIEW ALL
@@ -138,14 +157,18 @@ export default function WinterEssentials() {
                                 className="relative w-[240px] shrink-0 snap-start rounded-md border border-slate-200 bg-white sm:w-[260px]"
                             >
                                 {p.badge ? (
-                                    <span className="absolute left-2 top-2 rounded bg-lime-600 px-2 py-1 text-[10px] font-semibold text-white">
+                                    <span
+                                        className={`absolute left-2 top-2 rounded px-2 py-1 text-[10px] font-semibold text-white ${
+                                            p.badgeTone === "red" ? "bg-rose-600" : "bg-lime-600"
+                                        }`}
+                                    >
                                         {p.badge}
                                     </span>
                                 ) : null}
 
                                 <div className="flex h-44 items-center justify-center p-4">
                                     <img
-                                        src={svgPlaceholderDataUrl("Miriluxe")}
+                                        src={svgPlaceholderDataUrl("Makeup")}
                                         alt=""
                                         className="h-full w-full object-contain"
                                     />
@@ -158,6 +181,7 @@ export default function WinterEssentials() {
                                     <p className="mt-1 min-h-[32px] overflow-hidden text-[11px] font-medium text-lime-700">
                                         {p.subtitle}
                                     </p>
+
                                     <div className="mt-2 flex items-center justify-center text-[11px] font-semibold text-slate-700">
                                         {p.sizeLabel}
                                     </div>
@@ -171,8 +195,10 @@ export default function WinterEssentials() {
                                         <span className="text-slate-600">{p.reviews} Reviews</span>
                                     </div>
 
-                                    <div className="mt-2 flex items-center justify-center text-base font-bold text-slate-900">
-                                        ₹{p.price}
+                                    <div className="mt-2 flex items-center justify-center gap-2">
+                                        <span className="text-base font-bold text-slate-900">₹{p.price}</span>
+                                        <span className="text-xs font-semibold text-slate-500 line-through">₹{p.mrp}</span>
+                                        <span className="text-[10px] font-semibold text-lime-700">{p.offer}</span>
                                     </div>
                                 </div>
 

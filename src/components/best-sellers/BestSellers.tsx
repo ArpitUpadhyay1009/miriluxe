@@ -141,7 +141,7 @@ export default function BestSellers() {
 
                     <div
                         ref={scrollerRef}
-                        className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2"
+                        className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2"
                     >
                         {products.map((p) => (
                             <article
