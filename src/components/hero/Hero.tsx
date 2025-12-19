@@ -53,7 +53,7 @@ export default function Hero() {
 
     return (
         <section
-            className="w-full"
+            className="hidden w-full md:block"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
             aria-label="Hero carousel"
