@@ -6,6 +6,7 @@ import SkinCare from "@/src/components/skin-care/SkinCare";
 import Hairfall from "@/src/components/hairfall/Hairfall";
 import NewLaunches from "@/src/components/new-launches/NewLaunches";
 import BabyCare from "@/src/components/baby-care/BabyCare";
+import Monsoon from "@/src/components/monsoon/Monsoon";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Hairfall />
       <NewLaunches />
       <BabyCare />
+      <Monsoon />
     </main>
   );
 }
