@@ -9,6 +9,7 @@ import BabyCare from "@/src/components/baby-care/BabyCare";
 import Monsoon from "@/src/components/monsoon/Monsoon";
 import Fragrances from "@/src/components/fragrances/Fragrances";
 import Information from "@/src/components/information/Information";
+import Charity from "@/src/components/charity/Charity";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <Monsoon />
       <Fragrances />
       <Information />
+      <Charity />
     </main>
   );
 }
