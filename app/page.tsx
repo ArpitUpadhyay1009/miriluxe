@@ -4,6 +4,7 @@ import WinterEssentials from "@/src/components/winter-essentials/WinterEssential
 import Makeup from "@/src/components/makeup/Makeup";
 import SkinCare from "@/src/components/skin-care/SkinCare";
 import Hairfall from "@/src/components/hairfall/Hairfall";
+import NewLaunches from "@/src/components/new-launches/NewLaunches";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Makeup />
       <SkinCare />
       <Hairfall />
+      <NewLaunches />
     </main>
   );
 }
