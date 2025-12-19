@@ -7,6 +7,7 @@ import Hairfall from "@/src/components/hairfall/Hairfall";
 import NewLaunches from "@/src/components/new-launches/NewLaunches";
 import BabyCare from "@/src/components/baby-care/BabyCare";
 import Monsoon from "@/src/components/monsoon/Monsoon";
+import Fragrances from "@/src/components/fragrances/Fragrances";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <NewLaunches />
       <BabyCare />
       <Monsoon />
+      <Fragrances />
     </main>
   );
 }
