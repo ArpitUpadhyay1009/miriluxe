@@ -8,6 +8,7 @@ import NewLaunches from "@/src/components/new-launches/NewLaunches";
 import BabyCare from "@/src/components/baby-care/BabyCare";
 import Monsoon from "@/src/components/monsoon/Monsoon";
 import Fragrances from "@/src/components/fragrances/Fragrances";
+import Information from "@/src/components/information/Information";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <BabyCare />
       <Monsoon />
       <Fragrances />
+      <Information />
     </main>
   );
 }
