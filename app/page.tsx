@@ -11,6 +11,7 @@ import Fragrances from "@/src/components/fragrances/Fragrances";
 import Information from "@/src/components/information/Information";
 import Charity from "@/src/components/charity/Charity";
 import Testimonial from "@/src/components/testimonial/Testimonial";
+import FooterInfo from "@/src/components/footer-info/FooterInfo";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       <Information />
       <Charity />
       <Testimonial />
+      <FooterInfo />
     </main>
   );
 }
