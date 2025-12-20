@@ -2,8 +2,10 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-import { useMemo, useRef } from "react";
+import { Star } from "lucide-react";
+import { useMemo } from "react";
+import { useScrollProgress } from "@/src/hooks/useScrollProgress";
+import ScrollProgressIndicator from "@/src/components/shared/ScrollProgressIndicator";
 
 type Product = {
     id: string;
@@ -100,15 +102,7 @@ export default function Hairfall() {
         [],
     );
 
-    const scrollerRef = useRef<HTMLDivElement | null>(null);
-
-    const scrollByCards = (direction: "left" | "right") => {
-        const el = scrollerRef.current;
-        if (!el) return;
-        const base = Math.max(260, Math.round(el.clientWidth * 0.9));
-        const amount = direction === "left" ? -base : base;
-        el.scrollBy({ left: amount, behavior: "smooth" });
-    };
+    const { scrollerRef, progress } = useScrollProgress<HTMLDivElement>();
 
     return (
         <section className="w-full bg-white py-10">
@@ -130,15 +124,6 @@ export default function Hairfall() {
                 </div>
 
                 <div className="relative mt-6">
-                    <button
-                        type="button"
-                        aria-label="Scroll left"
-                        onClick={() => scrollByCards("left")}
-                        className="absolute left-2 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50 md:left-0 md:-translate-x-1/2"
-                    >
-                        <ChevronLeft className="h-5 w-5" />
-                    </button>
-
                     <div
                         ref={scrollerRef}
                         className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2"
@@ -199,14 +184,7 @@ export default function Hairfall() {
                         ))}
                     </div>
 
-                    <button
-                        type="button"
-                        aria-label="Scroll right"
-                        onClick={() => scrollByCards("right")}
-                        className="absolute right-2 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50 md:right-0 md:translate-x-1/2"
-                    >
-                        <ChevronRight className="h-5 w-5" />
-                    </button>
+                    <ScrollProgressIndicator progress={progress} className="absolute bottom-0 left-3 translate-y-1/2" />
                 </div>
             </div>
         </section>
