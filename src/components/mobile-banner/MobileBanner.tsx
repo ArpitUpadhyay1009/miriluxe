@@ -25,32 +25,42 @@ export default function MobileBanner() {
     return (
         <>
             {/* Fixed banner */}
-            <div className="fixed top-0 left-0 right-0 z-50 md:hidden">
+            <div
+                className={`fixed top-0 left-0 right-0 z-50 overflow-hidden md:hidden transition-[height] duration-500 ${searchExpanded ? "h-[56px]" : "h-[110px]"
+                    }`}
+            >
                 {/* Orange banner layer */}
                 <div
-                    className={`absolute inset-0 bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 transition-opacity duration-500 ${searchExpanded ? "opacity-0" : "opacity-100"
+                    className={`absolute inset-0 bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 transition-opacity duration-500 ${searchExpanded ? "opacity-0" : "opacity-100 rounded-b-[24px]"
                         }`}
                 />
 
                 {/* White background layer */}
                 <div
-                    className={`absolute inset-0 bg-white shadow-sm transition-opacity duration-500 ${searchExpanded ? "opacity-100" : "opacity-0"
+                    className={`absolute inset-0 bg-white transition-opacity duration-500 ${searchExpanded
+                        ? "opacity-100 shadow-[0_6px_14px_rgba(15,23,42,0.08)]"
+                        : "opacity-0 rounded-b-[24px]"
                         }`}
                 />
 
                 {/* Content */}
-                <div className="relative flex items-center gap-2 px-3 py-2">
+                <div
+                    className={`relative flex h-full items-center gap-3 px-4 transition-all duration-500 ${searchExpanded ? "py-2" : "py-3"
+                        }`}
+                >
                     <div
-                        className={`min-w-0 shrink overflow-hidden transition-all duration-500 ${searchExpanded ? "w-0 opacity-0" : "flex-1 opacity-100"
+                        className={`min-w-0 flex-1 space-y-1 text-white transition-all duration-500 ${searchExpanded ? "max-w-0 -translate-y-1 opacity-0" : "max-w-[220px] opacity-100"
                             }`}
                     >
-                        <p className="text-[9px] font-semibold uppercase tracking-widest text-white/80">OMG! Sale</p>
-                        <p className="text-sm font-bold text-white leading-tight">Buy 1 Get 1 FREE</p>
-                        <p className="text-[10px] text-white/90">Few hours left</p>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-white/80">OMG! Sale</p>
+                        <p className="text-base font-bold leading-tight text-white">Buy 1 Get 1 FREE</p>
+                        <p className="text-[11px] text-white/90">Few hours left</p>
                     </div>
 
                     <form
-                        className={`flex items-center rounded-full bg-white px-3 py-1.5 transition-all duration-500 ${searchExpanded ? "flex-1 border border-slate-200" : "w-[120px] shadow-lg"
+                        className={`flex h-10 shrink-0 items-center rounded-full bg-white px-3 transition-all duration-500 ${searchExpanded
+                                ? "flex-1 border border-slate-200 shadow-none"
+                                : "ml-auto w-[130px] border border-transparent shadow-[0_10px_28px_rgba(15,23,42,0.28)]"
                             }`}
                         role="search"
                     >
@@ -66,7 +76,7 @@ export default function MobileBanner() {
 
                 {/* Zigzag */}
                 <div
-                    className={`relative text-white transition-all duration-500 overflow-hidden ${searchExpanded ? "h-0" : "h-3"
+                    className={`absolute bottom-0 left-0 right-0 overflow-hidden text-white transition-all duration-500 ${searchExpanded ? "h-0" : "h-4"
                         }`}
                 >
                     <svg viewBox="0 0 100 8" className="h-full w-full" preserveAspectRatio="none" aria-hidden>
@@ -80,9 +90,9 @@ export default function MobileBanner() {
                 </div>
             </div>
 
-            {/* Spacer - adjusts based on expanded state */}
+            {/* Spacer uses same height as fixed banner */}
             <div
-                className={`md:hidden transition-all duration-500 ${searchExpanded ? "h-[44px]" : "h-[75px]"
+                className={`md:hidden transition-[height] duration-500 ${searchExpanded ? "h-[56px]" : "h-[110px]"
                     }`}
             />
         </>
