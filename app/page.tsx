@@ -12,12 +12,14 @@ import Information from "@/src/components/information/Information";
 import Charity from "@/src/components/charity/Charity";
 import Testimonial from "@/src/components/testimonial/Testimonial";
 import FooterInfo from "@/src/components/footer-info/FooterInfo";
+import PromoCarousel from "@/src/components/promo-carousel/PromoCarousel";
 
 export default function Home() {
   return (
     <main>
       <Hero />
       <BestSellers />
+      <PromoCarousel />
       <WinterEssentials />
       <Makeup />
       <SkinCare />

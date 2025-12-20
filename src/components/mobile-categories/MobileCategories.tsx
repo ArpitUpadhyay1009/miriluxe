@@ -63,6 +63,9 @@ export default function MobileCategories() {
                     );
                 })}
             </div>
+            <p className="px-4 pb-3 text-sm font-semibold text-slate-900">
+                Buy 1 Get 1 FREE : <span className="font-normal text-slate-600">Sale Ends Tonight</span>
+            </p>
         </div>
     );
 }

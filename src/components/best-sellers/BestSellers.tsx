@@ -107,7 +107,7 @@ export default function BestSellers() {
     return (
         <section className="w-full bg-white py-10">
             <div className="mx-auto w-full max-w-7xl px-4 lg:px-8">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div className="hidden flex-col gap-4 sm:flex-row sm:items-start sm:justify-between md:flex">
                     <div>
                         <h2 className="text-xl font-semibold text-slate-900">Best Sellers</h2>
                         <p className="mt-1 max-w-3xl text-sm text-slate-600">

@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Star } from "lucide-react";
+import { Brush, Droplet, Sparkles, Star } from "lucide-react";
 import { useMemo } from "react";
 import { useScrollProgress } from "@/src/hooks/useScrollProgress";
 import ScrollProgressIndicator from "@/src/components/shared/ScrollProgressIndicator";
+import SectionIntroMobile from "@/src/components/shared/SectionIntroMobile";
 
 type BadgeTone = "green" | "red";
 
@@ -66,7 +67,7 @@ export default function Makeup() {
                 mrp: 999,
                 offer: "50% OFF",
                 badge: "BEST SELLER",
-                badgeTone: "red" as const,
+                badgeTone: "green" as const,
             },
             {
                 id: "mk3",
@@ -126,10 +127,21 @@ export default function Makeup() {
 
     const { scrollerRef, progress } = useScrollProgress<HTMLDivElement>();
 
+    const makeupSliderIcons = [
+        { label: "Moisture", icon: Droplet },
+        { label: "Sparkle", icon: Sparkles },
+        { label: "Precise", icon: Brush },
+    ];
+
     return (
         <section className="w-full bg-white py-10">
             <div className="mx-auto w-full max-w-7xl px-4 lg:px-8">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <SectionIntroMobile
+                    title="Our Lipstick Bestsellers"
+                    description="Vibrant long-stay shades enriched with natural goodness."
+                    icons={makeupSliderIcons}
+                />
+                <div className="hidden flex-col gap-4 sm:flex-row sm:items-start sm:justify-between md:flex">
                     <div>
                         <h2 className="text-xl font-semibold text-slate-900">Makeup</h2>
                         <p className="mt-1 max-w-3xl text-sm text-slate-600">

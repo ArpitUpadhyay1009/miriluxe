@@ -54,7 +54,7 @@ export default function Fragrances() {
                 mrp: 899,
                 offer: "50% off",
                 badge: "BEST SELLER",
-                badgeTone: "red" as const,
+                badgeTone: "green" as const,
             },
             {
                 id: "fr2",
@@ -67,7 +67,7 @@ export default function Fragrances() {
                 mrp: 899,
                 offer: "50% off",
                 badge: "BEST SELLER",
-                badgeTone: "red" as const,
+                badgeTone: "green" as const,
             },
             {
                 id: "fr3",
@@ -80,7 +80,7 @@ export default function Fragrances() {
                 mrp: 899,
                 offer: "50% off",
                 badge: "BEST SELLER",
-                badgeTone: "red" as const,
+                badgeTone: "green" as const,
             },
             {
                 id: "fr4",
@@ -93,7 +93,7 @@ export default function Fragrances() {
                 mrp: 899,
                 offer: "50% off",
                 badge: "BEST SELLER",
-                badgeTone: "red" as const,
+                badgeTone: "green" as const,
             },
             {
                 id: "fr5",
@@ -106,7 +106,7 @@ export default function Fragrances() {
                 mrp: 899,
                 offer: "50% off",
                 badge: "BEST SELLER",
-                badgeTone: "red" as const,
+                badgeTone: "green" as const,
             },
             {
                 id: "fr6",
@@ -119,7 +119,7 @@ export default function Fragrances() {
                 mrp: 899,
                 offer: "50% off",
                 badge: "BEST SELLER",
-                badgeTone: "red" as const,
+                badgeTone: "green" as const,
             },
         ],
         [],
@@ -130,7 +130,7 @@ export default function Fragrances() {
     return (
         <section className="w-full bg-white py-10">
             <div className="mx-auto w-full max-w-7xl px-4 lg:px-8">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div className="hidden flex-col gap-4 sm:flex-row sm:items-start sm:justify-between md:flex">
                     <div>
                         <h2 className="text-xl font-semibold text-slate-900">Fragrances</h2>
                         <p className="mt-1 max-w-3xl text-sm text-slate-600">

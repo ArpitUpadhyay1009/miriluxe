@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Star } from "lucide-react";
+import { Gift, Sparkles, Star, TrendingUp } from "lucide-react";
 import { useMemo } from "react";
 import { useScrollProgress } from "@/src/hooks/useScrollProgress";
 import ScrollProgressIndicator from "@/src/components/shared/ScrollProgressIndicator";
+import SectionIntroMobile from "@/src/components/shared/SectionIntroMobile";
 
 type Product = {
     id: string;
@@ -35,6 +36,12 @@ function svgPlaceholderDataUrl(label: string): string {
 </svg>`;
     return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
+
+const newLaunchSliderIcons = [
+    { label: "Just In", icon: Sparkles },
+    { label: "Top Pick", icon: Gift },
+    { label: "Trend", icon: TrendingUp },
+];
 
 export default function NewLaunches() {
     const products = useMemo<Product[]>(
@@ -112,7 +119,12 @@ export default function NewLaunches() {
     return (
         <section className="w-full bg-white py-10">
             <div className="mx-auto w-full max-w-7xl px-4 lg:px-8">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <SectionIntroMobile
+                    title="Fresh Drops"
+                    description="See what's new in care, makeup, and baby staples this week."
+                    icons={newLaunchSliderIcons}
+                />
+                <div className="hidden flex-col gap-4 md:flex-row md:items-start md:justify-between lg:flex">
                     <div>
                         <h2 className="text-xl font-semibold text-slate-900">New Launches</h2>
                         <p className="mt-1 max-w-3xl text-sm text-slate-600">

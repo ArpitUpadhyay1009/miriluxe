@@ -2,10 +2,11 @@
 "use client";
 
 import Link from "next/link";
-import { Star } from "lucide-react";
+import { Droplet, Leaf, Sparkles, Star } from "lucide-react";
 import { useMemo } from "react";
 import { useScrollProgress } from "@/src/hooks/useScrollProgress";
 import ScrollProgressIndicator from "@/src/components/shared/ScrollProgressIndicator";
+import SectionIntroMobile from "@/src/components/shared/SectionIntroMobile";
 
 type Product = {
     id: string;
@@ -34,6 +35,12 @@ function svgPlaceholderDataUrl(label: string): string {
 </svg>`;
     return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
+
+const skinSliderIcons = [
+    { label: "Glow", icon: Sparkles },
+    { label: "Hydrate", icon: Droplet },
+    { label: "Calm", icon: Leaf },
+];
 
 export default function SkinCare() {
     const products = useMemo<Product[]>(
@@ -107,7 +114,12 @@ export default function SkinCare() {
     return (
         <section className="w-full bg-white py-10">
             <div className="mx-auto w-full max-w-7xl px-4 lg:px-8">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <SectionIntroMobile
+                    title="Glow Rituals"
+                    description="Lightweight cleansers and serums that keep skin calm & glassy."
+                    icons={skinSliderIcons}
+                />
+                <div className="hidden flex-col gap-4 sm:flex-row sm:items-start sm:justify-between md:flex">
                     <div>
                         <h2 className="text-xl font-semibold text-slate-900">Skin Care</h2>
                         <p className="mt-1 max-w-3xl text-sm text-slate-600">

@@ -1,8 +1,10 @@
 
 "use client";
 
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Star } from "lucide-react";
+import { useMemo } from "react";
+import { useScrollProgress } from "@/src/hooks/useScrollProgress";
+import ScrollProgressIndicator from "@/src/components/shared/ScrollProgressIndicator";
 
 type Standard = {
     id: string;
@@ -106,59 +108,7 @@ export default function Testimonial() {
         [],
     );
 
-    const scrollerRef = useRef<HTMLDivElement | null>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
-
-    const scrollToIndex = (idx: number) => {
-        const el = scrollerRef.current;
-        if (!el) return;
-        const child = el.children.item(idx) as HTMLElement | null;
-        if (!child) return;
-        child.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-    };
-
-    const scrollByCards = (direction: "left" | "right") => {
-        const el = scrollerRef.current;
-        if (!el) return;
-        const base = Math.max(320, Math.round(el.clientWidth * 0.9));
-        const amount = direction === "left" ? -base : base;
-        el.scrollBy({ left: amount, behavior: "smooth" });
-    };
-
-    useEffect(() => {
-        const el = scrollerRef.current;
-        if (!el) return;
-
-        let raf = 0;
-
-        const onScroll = () => {
-            window.cancelAnimationFrame(raf);
-            raf = window.requestAnimationFrame(() => {
-                const cards = Array.from(el.children) as HTMLElement[];
-                if (cards.length === 0) return;
-                const center = el.scrollLeft + el.clientWidth / 2;
-                let bestIdx = 0;
-                let bestDist = Number.POSITIVE_INFINITY;
-                cards.forEach((c, i) => {
-                    const cCenter = c.offsetLeft + c.clientWidth / 2;
-                    const d = Math.abs(cCenter - center);
-                    if (d < bestDist) {
-                        bestDist = d;
-                        bestIdx = i;
-                    }
-                });
-                setActiveIndex(bestIdx);
-            });
-        };
-
-        el.addEventListener("scroll", onScroll, { passive: true });
-        onScroll();
-
-        return () => {
-            window.cancelAnimationFrame(raf);
-            el.removeEventListener("scroll", onScroll);
-        };
-    }, []);
+    const { scrollerRef, progress } = useScrollProgress<HTMLDivElement>();
 
     return (
         <section className="w-full bg-white">
@@ -190,15 +140,6 @@ export default function Testimonial() {
             <div className="w-full bg-gradient-to-b from-white via-white to-lime-50">
                 <div className="mx-auto w-full max-w-7xl px-4 pb-12 lg:px-8">
                     <div className="relative">
-                        <button
-                            type="button"
-                            aria-label="Scroll left"
-                            onClick={() => scrollByCards("left")}
-                            className="absolute left-2 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50 md:left-0 md:-translate-x-1/2"
-                        >
-                            <ChevronLeft className="h-5 w-5" />
-                        </button>
-
                         <div
                             ref={scrollerRef}
                             className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-4"
@@ -236,26 +177,7 @@ export default function Testimonial() {
                             ))}
                         </div>
 
-                        <button
-                            type="button"
-                            aria-label="Scroll right"
-                            onClick={() => scrollByCards("right")}
-                            className="absolute right-2 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50 md:right-0 md:translate-x-1/2"
-                        >
-                            <ChevronRight className="h-5 w-5" />
-                        </button>
-                    </div>
-
-                    <div className="mt-4 flex items-center justify-center gap-2">
-                        {testimonials.map((t, idx) => (
-                            <button
-                                key={t.id}
-                                type="button"
-                                aria-label={`Go to testimonial ${idx + 1}`}
-                                onClick={() => scrollToIndex(idx)}
-                                className={`h-2 w-2 rounded-full ${idx === activeIndex ? "bg-slate-900" : "bg-slate-300"}`}
-                            />
-                        ))}
+                        <ScrollProgressIndicator progress={progress} className="absolute bottom-0 left-3 translate-y-1/2" />
                     </div>
                 </div>
             </div>
