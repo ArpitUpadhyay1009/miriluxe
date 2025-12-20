@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export default function Charity() {
     return (
-        <section className="w-full bg-white py-10">
-            <div className="mx-auto w-full max-w-7xl px-4 lg:px-8">
-                <div className="relative overflow-hidden rounded-lg border border-slate-100 bg-gradient-to-r from-sky-50 via-white to-emerald-50">
+        <section className="flex min-h-screen w-full items-center bg-gradient-to-b from-sky-50 via-white to-emerald-50 py-10 sm:py-16">
+            <div className="mx-auto w-full max-w-6xl px-4 lg:px-8">
+                <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white/80 shadow-2xl backdrop-blur-sm">
                     <div className="pointer-events-none absolute inset-0">
                         <svg
                             className="absolute left-0 top-0 h-32 w-32 opacity-20"
@@ -54,7 +54,7 @@ export default function Charity() {
                         </svg>
                     </div>
 
-                    <div className="grid gap-8 p-6 sm:p-10 lg:grid-cols-2 lg:items-center">
+                    <div className="grid min-h-[60vh] gap-8 p-6 sm:p-10 lg:grid-cols-2 lg:items-center">
                         <div className="mx-auto w-full max-w-md">
                             <svg
                                 viewBox="0 0 520 260"

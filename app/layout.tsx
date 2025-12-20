@@ -6,6 +6,7 @@ import Navbar from "@/src/components/navbar/Navbar";
 import MobileNav from "@/src/components/mobile-nav/MobileNav";
 import MobileBanner from "@/src/components/mobile-banner/MobileBanner";
 import MobileCategories from "@/src/components/mobile-categories/MobileCategories";
+import InitialLoader from "@/src/components/initial-loader/InitialLoader";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${publicSans.className} bg-white text-slate-900`}>
         {/* Mobile: Fixed banner at top (includes its own spacer) */}
+        <InitialLoader />
         <MobileBanner />
         {/* Mobile: Category icons (scrolls with page) */}
         <MobileCategories />
