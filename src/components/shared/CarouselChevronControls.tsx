@@ -10,7 +10,7 @@ export default function CarouselChevronControls({ scrollElement }: CarouselChevr
     const scroll = (direction: "left" | "right") => {
         const node = scrollElement;
         if (!node) return;
-        const amount = node.clientWidth * 0.9;
+        const amount = node.clientWidth;
         node.scrollBy({
             left: direction === "left" ? -amount : amount,
             behavior: "smooth",
@@ -23,17 +23,17 @@ export default function CarouselChevronControls({ scrollElement }: CarouselChevr
                 type="button"
                 aria-label="Scroll left"
                 onClick={() => scroll("left")}
-                className="pointer-events-auto absolute left-0 top-1/2 hidden -translate-y-1/2 translate-x-[-50%] items-center justify-center rounded-full bg-white/95 p-2 text-slate-600 shadow-lg ring-1 ring-slate-200 transition hover:bg-sky-50 lg:flex"
+                className="pointer-events-auto absolute -left-8 top-1/2 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white p-3 text-slate-600 shadow-lg hover:bg-gray-50 lg:flex"
             >
-                <ChevronLeft className="h-6 w-6" />
+                <ChevronLeft className="h-5 w-5" />
             </button>
             <button
                 type="button"
                 aria-label="Scroll right"
                 onClick={() => scroll("right")}
-                className="pointer-events-auto absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-[50%] items-center justify-center rounded-full bg-white/95 p-2 text-slate-600 shadow-lg ring-1 ring-slate-200 transition hover:bg-sky-50 lg:flex"
+                className="pointer-events-auto absolute -right-8 top-1/2 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white p-3 text-slate-600 shadow-lg hover:bg-gray-50 lg:flex"
             >
-                <ChevronRight className="h-6 w-6" />
+                <ChevronRight className="h-5 w-5" />
             </button>
         </>
     );

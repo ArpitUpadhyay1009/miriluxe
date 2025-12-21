@@ -114,7 +114,7 @@ export default function BabyCare() {
 
     return (
         <section className="w-full bg-white py-10">
-            <div className="mx-auto w-full max-w-[1280px] px-4 lg:px-8">
+            <div className="mx-auto w-full max-w-7xl px-4 lg:px-8">
                 <SectionIntroMobile
                     title="Snuggle-Soft Baby Care"
                     description="Nourishing washes and creams crafted for delicate newborn skin."
@@ -139,12 +139,12 @@ export default function BabyCare() {
                 <div className="relative mt-6">
                     <div
                         ref={scrollerRef}
-                        className="no-scrollbar relative flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] pr-8"
+                        className="no-scrollbar relative flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 px-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
                     >
                         {products.map((p) => (
                             <article
                                 key={p.id}
-                                className="relative w-[calc((100%-72px)/4)] min-w-[280px] shrink-0 snap-start rounded-lg border border-slate-200 bg-white"
+                                className="relative flex w-[calc((100%-48px)/4)] min-w-[270px] shrink-0 flex-col snap-start rounded-lg border border-slate-200 bg-white"
                             >
                                 {p.badge ? (
                                     <span className="absolute left-2 top-2 rounded bg-lime-600 px-2 py-1 text-[10px] font-semibold text-white">
@@ -185,10 +185,10 @@ export default function BabyCare() {
                                     </div>
                                 </div>
 
-                                <div className="mt-4 px-4 pb-4">
+                                <div className="mt-auto">
                                     <button
                                         type="button"
-                                        className="inline-flex h-12 w-full items-center justify-center rounded-none bg-[#00afef] text-sm font-semibold tracking-wide text-white hover:bg-[#0095cc]"
+                                        className="inline-flex h-[52px] w-full items-center justify-center rounded-b-lg bg-[#00afef] text-[15px] font-medium text-white hover:bg-[#0095cc]"
                                     >
                                         ADD TO CART
                                     </button>
