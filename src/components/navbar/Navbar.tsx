@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Search, ShoppingCart, User } from "lucide-react";
-import { useId, useMemo } from "react";
+import { useId, useMemo, useState, useEffect } from "react";
+import NavDropdown from "./NavDropdown";
 
 type NavLink = {
     label: string;
@@ -11,7 +12,39 @@ type NavLink = {
 };
 
 export default function Navbar() {
+    const [showFaceDropdown, setShowFaceDropdown] = useState(false);
+    const [showHairDropdown, setShowHairDropdown] = useState(false);
+    const [showMakeupDropdown, setShowMakeupDropdown] = useState(false);
+    const [showBodyDropdown, setShowBodyDropdown] = useState(false);
+    const [showBabyDropdown, setShowBabyDropdown] = useState(false);
+    const [showCombosDropdown, setShowCombosDropdown] = useState(false);
+    const [showIngredientDropdown, setShowIngredientDropdown] = useState(false);
+    const [dropdownPosition, setDropdownPosition] = useState(0);
     const searchId = useId();
+    const [searchPlaceholder, setSearchPlaceholder] = useState("Search for Face Mask");
+    const searchTerms = ["Search for Ubtan", "Search for Lipstick", "Search for Face Mask"];
+
+    useEffect(() => {
+        let currentIndex = 0;
+        const interval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % searchTerms.length;
+            setSearchPlaceholder("");
+            let charIndex = 0;
+            const word = searchTerms[currentIndex];
+            const typingInterval = setInterval(() => {
+                if (charIndex <= word.length) {
+                    setSearchPlaceholder(word.substring(0, charIndex));
+                    charIndex++;
+                } else {
+                    clearInterval(typingInterval);
+                }
+            }, 50); // Speed of typing
+        }, 4000); // Time between words
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, []);
 
     const links = useMemo<NavLink[]>(
         () => [
@@ -67,8 +100,8 @@ export default function Navbar() {
                                         <input
                                             id={searchId}
                                             type="search"
-                                            placeholder="Search for Face Mask"
-                                            className="h-9 w-full rounded-l-md border border-slate-300 bg-white pl-9 pr-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+                                            placeholder={searchPlaceholder}
+                                            className="h-9 w-full rounded-l-md border border-slate-300 bg-white pl-9 pr-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200 [&::placeholder]:transition-opacity"
                                         />
                                     </div>
                                     <button
@@ -99,23 +132,166 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        <nav className="border-t border-slate-200">
+                        <nav
+                            className="relative border-t border-slate-200"
+                            onMouseLeave={() => {
+                                setShowFaceDropdown(false);
+                                setShowHairDropdown(false);
+                                setShowMakeupDropdown(false);
+                                setShowBodyDropdown(false);
+                                setShowBabyDropdown(false);
+                                setShowCombosDropdown(false);
+                                setShowIngredientDropdown(false);
+                            }}
+                        >
                             <ul className="flex h-9 items-center gap-4 overflow-x-auto text-[12px] font-semibold tracking-wide text-slate-700">
                                 {links.map((l) => (
                                     <li key={l.href} className="shrink-0">
                                         <Link
                                             href={l.href}
                                             className="inline-flex h-9 items-center border-b-2 border-transparent px-1 hover:border-sky-600 hover:text-slate-900"
+                                            onMouseEnter={(e) => {
+                                                const target = e.currentTarget;
+                                                const navContainer = target.closest('nav');
+                                                if (navContainer) {
+                                                    const targetRect = target.getBoundingClientRect();
+                                                    const containerRect = navContainer.getBoundingClientRect();
+                                                    setDropdownPosition(targetRect.left - containerRect.left);
+                                                }
+                                                if (l.label === "FACE") {
+                                                    setShowHairDropdown(false);
+                                                    setShowMakeupDropdown(false);
+                                                    setShowBodyDropdown(false);
+                                                    setShowBabyDropdown(false);
+                                                    setShowCombosDropdown(false);
+                                                    setShowIngredientDropdown(false);
+                                                    setShowFaceDropdown(true);
+                                                } else if (l.label === "HAIR") {
+                                                    setShowFaceDropdown(false);
+                                                    setShowMakeupDropdown(false);
+                                                    setShowBodyDropdown(false);
+                                                    setShowBabyDropdown(false);
+                                                    setShowCombosDropdown(false);
+                                                    setShowIngredientDropdown(false);
+                                                    setShowHairDropdown(true);
+                                                } else if (l.label === "MAKEUP") {
+                                                    setShowFaceDropdown(false);
+                                                    setShowHairDropdown(false);
+                                                    setShowBodyDropdown(false);
+                                                    setShowBabyDropdown(false);
+                                                    setShowCombosDropdown(false);
+                                                    setShowIngredientDropdown(false);
+                                                    setShowMakeupDropdown(true);
+                                                } else if (l.label === "BODY") {
+                                                    setShowFaceDropdown(false);
+                                                    setShowHairDropdown(false);
+                                                    setShowMakeupDropdown(false);
+                                                    setShowBabyDropdown(false);
+                                                    setShowCombosDropdown(false);
+                                                    setShowIngredientDropdown(false);
+                                                    setShowBodyDropdown(true);
+                                                } else if (l.label === "BABY") {
+                                                    setShowFaceDropdown(false);
+                                                    setShowHairDropdown(false);
+                                                    setShowMakeupDropdown(false);
+                                                    setShowBodyDropdown(false);
+                                                    setShowCombosDropdown(false);
+                                                    setShowIngredientDropdown(false);
+                                                    setShowBabyDropdown(true);
+                                                } else if (l.label === "COMBOS") {
+                                                    setShowFaceDropdown(false);
+                                                    setShowHairDropdown(false);
+                                                    setShowMakeupDropdown(false);
+                                                    setShowBodyDropdown(false);
+                                                    setShowBabyDropdown(false);
+                                                    setShowIngredientDropdown(false);
+                                                    setShowCombosDropdown(true);
+                                                } else if (l.label === "INGREDIENT") {
+                                                    setShowFaceDropdown(false);
+                                                    setShowHairDropdown(false);
+                                                    setShowMakeupDropdown(false);
+                                                    setShowBodyDropdown(false);
+                                                    setShowBabyDropdown(false);
+                                                    setShowCombosDropdown(false);
+                                                    setShowIngredientDropdown(true);
+                                                } else {
+                                                    setShowFaceDropdown(false);
+                                                    setShowHairDropdown(false);
+                                                    setShowMakeupDropdown(false);
+                                                    setShowBodyDropdown(false);
+                                                    setShowBabyDropdown(false);
+                                                    setShowCombosDropdown(false);
+                                                    setShowIngredientDropdown(false);
+                                                }
+                                            }}
                                         >
                                             {l.label}
                                         </Link>
                                     </li>
                                 ))}
                             </ul>
+                            <div className="absolute inset-x-0 top-[calc(100%+1px)]" style={{ paddingLeft: '8px', paddingRight: '8px' }}>
+                                {showFaceDropdown && (
+                                    <div
+                                        onMouseEnter={() => setShowFaceDropdown(true)}
+                                        onMouseLeave={() => setShowFaceDropdown(false)}
+                                    >
+                                        <NavDropdown type="face" isVisible={true} position={dropdownPosition} />
+                                    </div>
+                                )}
+                                {showHairDropdown && (
+                                    <div
+                                        onMouseEnter={() => setShowHairDropdown(true)}
+                                        onMouseLeave={() => setShowHairDropdown(false)}
+                                    >
+                                        <NavDropdown type="hair" isVisible={true} position={dropdownPosition} />
+                                    </div>
+                                )}
+                                {showMakeupDropdown && (
+                                    <div
+                                        onMouseEnter={() => setShowMakeupDropdown(true)}
+                                        onMouseLeave={() => setShowMakeupDropdown(false)}
+                                    >
+                                        <NavDropdown type="makeup" isVisible={true} position={dropdownPosition} />
+                                    </div>
+                                )}
+                                {showBodyDropdown && (
+                                    <div
+                                        onMouseEnter={() => setShowBodyDropdown(true)}
+                                        onMouseLeave={() => setShowBodyDropdown(false)}
+                                    >
+                                        <NavDropdown type="body" isVisible={true} position={dropdownPosition} />
+                                    </div>
+                                )}
+                                {showBabyDropdown && (
+                                    <div
+                                        onMouseEnter={() => setShowBabyDropdown(true)}
+                                        onMouseLeave={() => setShowBabyDropdown(false)}
+                                    >
+                                        <NavDropdown type="baby" isVisible={true} position={dropdownPosition} />
+                                    </div>
+                                )}
+                                {showCombosDropdown && (
+                                    <div
+                                        onMouseEnter={() => setShowCombosDropdown(true)}
+                                        onMouseLeave={() => setShowCombosDropdown(false)}
+                                    >
+                                        <NavDropdown type="combos" isVisible={true} position={dropdownPosition} />
+                                    </div>
+                                )}
+                                {showIngredientDropdown && (
+                                    <div
+                                        onMouseEnter={() => setShowIngredientDropdown(true)}
+                                        onMouseLeave={() => setShowIngredientDropdown(false)}
+                                    >
+                                        <NavDropdown type="ingredient" isVisible={true} position={dropdownPosition} />
+                                    </div>
+                                )}
+                            </div>
                         </nav>
                     </div>
                 </div>
-            </header>
+            </header >
         </>
     );
 }
