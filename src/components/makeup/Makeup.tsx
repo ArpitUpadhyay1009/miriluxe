@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import { useScrollProgress } from "@/src/hooks/useScrollProgress";
 import ScrollProgressIndicator from "@/src/components/shared/ScrollProgressIndicator";
 import SectionIntroMobile from "@/src/components/shared/SectionIntroMobile";
+import CarouselChevronControls from "@/src/components/shared/CarouselChevronControls";
 
 type BadgeTone = "green" | "red";
 
@@ -125,7 +126,7 @@ export default function Makeup() {
         [],
     );
 
-    const { scrollerRef, progress } = useScrollProgress<HTMLDivElement>();
+    const { scrollerRef, scrollerElement, progress } = useScrollProgress<HTMLDivElement>();
 
     const makeupSliderIcons = [
         { label: "Moisture", icon: Droplet },
@@ -135,7 +136,7 @@ export default function Makeup() {
 
     return (
         <section className="w-full bg-white py-10">
-            <div className="mx-auto w-full max-w-7xl px-4 lg:px-8">
+            <div className="mx-auto w-full max-w-[1280px] px-4 lg:px-8">
                 <SectionIntroMobile
                     title="Our Lipstick Bestsellers"
                     description="Vibrant long-stay shades enriched with natural goodness."
@@ -161,12 +162,12 @@ export default function Makeup() {
                 <div className="relative mt-6">
                     <div
                         ref={scrollerRef}
-                        className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2"
+                        className="no-scrollbar relative flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2 pr-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
                     >
                         {products.map((p) => (
                             <article
                                 key={p.id}
-                                className="relative w-[240px] shrink-0 snap-start rounded-md border border-slate-200 bg-white sm:w-[260px]"
+                                className="relative w-[calc((100%-72px)/4)] min-w-[280px] shrink-0 snap-start rounded-lg border border-slate-200 bg-white"
                             >
                                 {p.badge ? (
                                     <span
@@ -225,6 +226,7 @@ export default function Makeup() {
                         ))}
                     </div>
 
+                    <CarouselChevronControls scrollElement={scrollerElement} />
                     <ScrollProgressIndicator progress={progress} className="absolute bottom-0 left-3 translate-y-1/2" />
                 </div>
             </div>

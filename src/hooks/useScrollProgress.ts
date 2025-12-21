@@ -33,5 +33,5 @@ export function useScrollProgress<T extends HTMLElement>() {
         };
     }, [node]);
 
-    return { scrollerRef: ref, progress } as const;
+    return { scrollerRef: ref, scrollerElement: node, progress } as const;
 }

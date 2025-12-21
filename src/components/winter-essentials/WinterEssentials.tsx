@@ -2,11 +2,12 @@
 "use client";
 
 import Link from "next/link";
-import { Droplet, Snowflake, Sparkles, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Droplet, Snowflake, Sparkles, Star } from "lucide-react";
 import { useMemo } from "react";
 import { useScrollProgress } from "@/src/hooks/useScrollProgress";
 import ScrollProgressIndicator from "@/src/components/shared/ScrollProgressIndicator";
 import SectionIntroMobile from "@/src/components/shared/SectionIntroMobile";
+import CarouselChevronControls from "@/src/components/shared/CarouselChevronControls";
 
 type Product = {
     id: string;
@@ -109,11 +110,11 @@ export default function WinterEssentials() {
         [],
     );
 
-    const { scrollerRef, progress } = useScrollProgress<HTMLDivElement>();
+    const { scrollerRef, scrollerElement, progress } = useScrollProgress<HTMLDivElement>();
 
     return (
         <section className="w-full bg-white py-10">
-            <div className="mx-auto w-full max-w-7xl px-4 lg:px-8">
+            <div className="mx-auto w-full max-w-[1280px] px-4 lg:px-8">
                 <SectionIntroMobile
                     title="Winter Hydration Staples"
                     description="Layer rich butters, gels, and oils that comfort cozy months."
@@ -138,12 +139,12 @@ export default function WinterEssentials() {
                 <div className="relative mt-6">
                     <div
                         ref={scrollerRef}
-                        className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2"
+                        className="no-scrollbar relative flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
                     >
                         {products.map((p) => (
                             <article
                                 key={p.id}
-                                className="relative w-[240px] shrink-0 snap-start rounded-md border border-slate-200 bg-white sm:w-[260px]"
+                                className="relative w-[calc((100%-72px)/4)] min-w-[280px] shrink-0 snap-start rounded-lg border border-slate-200 bg-white"
                             >
                                 {p.badge ? (
                                     <span className="absolute left-2 top-2 rounded bg-lime-600 px-2 py-1 text-[10px] font-semibold text-white">
@@ -187,7 +188,7 @@ export default function WinterEssentials() {
                                 <div className="mt-4 px-4 pb-4">
                                     <button
                                         type="button"
-                                        className="inline-flex h-10 w-full items-center justify-center rounded-md bg-sky-600 text-xs font-semibold tracking-wide text-white hover:bg-sky-700"
+                                        className="inline-flex h-12 w-full items-center justify-center rounded-none bg-[#00afef] text-sm font-semibold tracking-wide text-white hover:bg-[#0095cc]"
                                     >
                                         ADD TO CART
                                     </button>
@@ -196,6 +197,16 @@ export default function WinterEssentials() {
                         ))}
                     </div>
 
+                    <div className="absolute left-0 top-1/2 z-10 -translate-y-1/2">
+                        <button onClick={() => scrollerElement?.scrollBy({ left: -scrollerElement.clientWidth, behavior: 'smooth' })} className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg">
+                            <ChevronLeft className="h-6 w-6 text-slate-600" />
+                        </button>
+                    </div>
+                    <div className="absolute right-0 top-1/2 z-10 -translate-y-1/2">
+                        <button onClick={() => scrollerElement?.scrollBy({ left: scrollerElement.clientWidth, behavior: 'smooth' })} className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg">
+                            <ChevronRight className="h-6 w-6 text-slate-600" />
+                        </button>
+                    </div>
                     <ScrollProgressIndicator progress={progress} className="absolute bottom-0 left-3 translate-y-1/2" />
                 </div>
             </div>

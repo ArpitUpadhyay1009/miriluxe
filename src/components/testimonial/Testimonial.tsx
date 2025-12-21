@@ -139,10 +139,10 @@ export default function Testimonial() {
 
             <div className="w-full bg-gradient-to-b from-white via-white to-lime-50">
                 <div className="mx-auto w-full max-w-7xl px-4 pb-12 lg:px-8">
-                    <div className="relative">
+                    <div className="relative mt-6">
                         <div
                             ref={scrollerRef}
-                            className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-4"
+                            className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 pr-8"
                         >
                             {testimonials.map((t) => (
                                 <article

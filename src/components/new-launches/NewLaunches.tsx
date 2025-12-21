@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import { useScrollProgress } from "@/src/hooks/useScrollProgress";
 import ScrollProgressIndicator from "@/src/components/shared/ScrollProgressIndicator";
 import SectionIntroMobile from "@/src/components/shared/SectionIntroMobile";
+import CarouselChevronControls from "@/src/components/shared/CarouselChevronControls";
 
 type Product = {
     id: string;
@@ -114,11 +115,11 @@ export default function NewLaunches() {
         [],
     );
 
-    const { scrollerRef, progress } = useScrollProgress<HTMLDivElement>();
+    const { scrollerRef, scrollerElement, progress } = useScrollProgress<HTMLDivElement>();
 
     return (
         <section className="w-full bg-white py-10">
-            <div className="mx-auto w-full max-w-7xl px-4 lg:px-8">
+            <div className="mx-auto w-full max-w-[1280px] px-4 lg:px-8">
                 <SectionIntroMobile
                     title="Fresh Drops"
                     description="See what's new in care, makeup, and baby staples this week."
@@ -143,12 +144,12 @@ export default function NewLaunches() {
                 <div className="relative mt-6">
                     <div
                         ref={scrollerRef}
-                        className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2"
+                        className="no-scrollbar relative flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] pr-8"
                     >
                         {products.map((p) => (
                             <article
                                 key={p.id}
-                                className="relative w-[240px] shrink-0 snap-start rounded-md border border-slate-200 bg-white sm:w-[260px]"
+                                className="relative w-[calc((100%-72px)/4)] min-w-[280px] shrink-0 snap-start rounded-lg border border-slate-200 bg-white"
                             >
                                 {p.badge ? (
                                     <span className="absolute left-2 top-2 rounded bg-lime-600 px-2 py-1 text-[10px] font-semibold text-white">
@@ -198,7 +199,7 @@ export default function NewLaunches() {
                                 <div className="mt-4 px-4 pb-4">
                                     <button
                                         type="button"
-                                        className="inline-flex h-10 w-full items-center justify-center rounded-md bg-sky-600 text-xs font-semibold tracking-wide text-white hover:bg-sky-700"
+                                        className="inline-flex h-12 w-full items-center justify-center rounded-none bg-[#00afef] text-sm font-semibold tracking-wide text-white hover:bg-[#0095cc]"
                                     >
                                         ADD TO CART
                                     </button>
@@ -207,6 +208,7 @@ export default function NewLaunches() {
                         ))}
                     </div>
 
+                    <CarouselChevronControls scrollElement={scrollerElement} />
                     <ScrollProgressIndicator progress={progress} className="absolute bottom-0 left-3 translate-y-1/2" />
                 </div>
             </div>

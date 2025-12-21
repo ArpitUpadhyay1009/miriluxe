@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+:root {
+  font-size: 19px;
+}
+
+@media (min-width: 1280px) {
+  :root {
+    font-size: 20px;
+  }
+}
+
+body {
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
 .no-scrollbar {
   scrollbar-width: none;
 }
