@@ -17,8 +17,8 @@ export default function MobileNav() {
 
     return (
         <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 shadow-[0_-6px_24px_rgba(15,23,42,0.12)] backdrop-blur md:hidden">
-            <div className="mx-auto flex max-w-3xl flex-col gap-3 px-3 py-3">
-                <div className="flex items-center gap-2 rounded-2xl border border-lime-200 bg-lime-50 px-4 py-2 text-xs font-semibold text-lime-900 shadow-sm">
+            <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-2 border-x-0 border-t rounded-t-2xl border-lime-200 bg-lime-50 px-4 py-2 text-xs font-semibold text-lime-900 shadow-sm">
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-lime-600">
                         <Gift className="h-4 w-4" />
                     </span>
@@ -28,7 +28,7 @@ export default function MobileNav() {
                     </div>
                 </div>
 
-                <div className="flex items-stretch justify-between">
+                <div className="flex items-stretch justify-between px-3 max-w-3xl mx-auto w-full">
                     {navItems.map((item) => {
                         const Icon = item.icon;
                         const isActive = item.href === "/" ? pathname === "/" : pathname?.startsWith(item.href);

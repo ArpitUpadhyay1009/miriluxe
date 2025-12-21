@@ -19,12 +19,12 @@ type Category = {
 };
 
 const categories: Category[] = [
-    { label: "Best Sellers", icon: Sparkles },
+    { label: "Best Sellers", icon: Star },
     { label: "Winter Care", icon: Snowflake },
     { label: "Face", icon: Smile },
     { label: "Hair", icon: Droplet },
     { label: "Top Kits", icon: Gift },
-    { label: "Makeup", icon: Star },
+    { label: "Makeup", icon: Sparkles },
     { label: "Baby", icon: Baby },
     { label: "Ingredients", icon: TestTube },
     { label: "Body", icon: Leaf },
@@ -47,16 +47,15 @@ export default function MobileCategories() {
                             onClick={() => setActiveCategory(cat.label)}
                         >
                             <span
-                                className={`inline-flex h-12 w-12 items-center justify-center rounded-full border ${isActive ? "border-sky-500 bg-sky-50 text-sky-600" : "border-slate-200 text-slate-500"
-                                    }`}
+                                className={`inline-flex h-14 w-14 items-center justify-center rounded-full border-2 transition-all duration-300 ease-in-out transform ${isActive ? "border-sky-500 bg-sky-50 text-sky-600 scale-105" : "border-slate-200 text-slate-500 scale-100"}`}
                             >
-                                <Icon className="h-5 w-5" />
+                                <Icon strokeWidth={1.5} className="h-6 w-6" />
                             </span>
-                            <span className={isActive ? "text-sky-600" : "text-slate-500"}>
+                            <span className={`transition-colors duration-300 ease-in-out ${isActive ? "text-sky-600" : "text-slate-500"}`}>
                                 {cat.label.split(" ")[0]}
                             </span>
                             <span
-                                className={`h-1 w-8 rounded-full ${isActive ? "bg-sky-600" : "bg-transparent"}`}
+                                className={`h-1 w-8 rounded-full transition-all duration-300 ease-in-out transform ${isActive ? "bg-sky-600 scale-x-100" : "bg-transparent scale-x-0"}`}
                                 aria-hidden
                             />
                         </button>
